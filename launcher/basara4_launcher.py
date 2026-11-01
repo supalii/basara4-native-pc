@@ -884,7 +884,7 @@ class Launcher(tk.Tk):
         self.update_info = None
         self.update_btn = None
         if play_now:
-            self.iconify()
+            self.withdraw()
             self.after(300, self.on_play)
         else:
             self.after(700, self._check_wav_leftovers)
@@ -2049,6 +2049,12 @@ class Launcher(tk.Tk):
         self.status.config(text=notice + ("Running, writing user\\audio_debug.log…" if self.cfg.get("audio_log")
                                           else "Running…  (Insert opens the in-game menu)"))
         self._refresh_image_label()
+        if self.play_now:
+            self._exit_after_play_launch()
+
+    def _exit_after_play_launch(self):
+        self.proc = None
+        self.destroy()
 
     def _make_window_icon(self, game):
         if Image is None or WINDOW_ICON.exists():
@@ -2626,11 +2632,14 @@ class Launcher(tk.Tk):
         os.startfile(path)
 
     def _close(self):
-        self._cleanup_update_view()
         if self.proc and self.proc.poll() is None:
-            if not messagebox.askyesno("Game running", "Stop the game and close the launcher?"):
+            if not messagebox.askyesno(
+                "Game running",
+                "Close the launcher and leave the game running? The launcher will no longer monitor it."
+            ):
                 return
-            self.proc.kill()
+            self.proc = None
+        self._cleanup_update_view()
         try:
             self._collect()
         except Exception:

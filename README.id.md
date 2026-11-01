@@ -43,7 +43,9 @@ Untuk memverifikasi dump, pastikan `eboot.bin` dan `sce_sys/param.sfo` ada. Saat
 1. Unduh `basara4-windows.zip` dari https://github.com/DarkTama/basara4-native-pc/releases lalu ekstrak.
 2. Salin folder dump game PS4 Anda ke dalam `game\`, atau klik tombol **Browse** di launcher untuk memilih lokasinya. Atur **Game update folder** dan **DLC folder** pada halaman Game jika memiliki update atau add-on.
 3. Jalankan **`Sengoku Basara 4.exe`**, pilih pengaturan Anda, dan klik **PLAY**. Peluncuran pertama akan menyiapkan image binary ke `out\` (memakan waktu sekitar 30–60 detik); peluncuran berikutnya langsung instan.
-4. Untuk langsung bermain dengan konfigurasi tersimpan tanpa membuka GUI launcher, jalankan **`Play Sengoku Basara 4.cmd`**.
+4. Untuk bermain dengan konfigurasi tersimpan tanpa menampilkan launcher, jalankan **`Play Sengoku Basara 4.exe`**. Proses launcher keluar setelah game mulai. Paket juga menyertakan `Play Sengoku Basara 4.cmd` sebagai shortcut.
+
+Menutup launcher saat game berjalan tidak menghentikan game setelah dikonfirmasi; launcher tidak lagi memantau sesi tersebut.
 
 ## Patch Translasi Bahasa Inggris
 Repositori ini **tidak menyertakan teks terjemahan atau aset game**. Pengguna wajib menyediakan patch translasi bahasa Inggris versi PS3 **BLJM61248** (v0.85 + Matabe fix).

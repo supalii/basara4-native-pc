@@ -5,7 +5,8 @@ Builds the Windows folder that is handed to players, from this repository.
   python packaging/basara4/make_package.py --out dist/basara4-windows
   python packaging/basara4/make_package.py --out D:/Games/basara4-windows --update
 
-Needs: MSYS2 CLANG64 (build.sh already run, so out/gpu/basara4-core.exe exists), and
+Needs: MSYS2 CLANG64 (build.sh already run, so out/gpu/basara4-core.exe and
+out/spartanport-play.exe exist), and
 `python -m pip install pyinstaller pillow numpy etcpak iced-x86==1.21.0` on the Windows
 Python that runs this script. The launcher must be closed while packaging.
 
@@ -78,8 +79,11 @@ def main():
     target, clang = args.out.resolve(), args.msys2 / "clang64/bin"
 
     core, mapper = REPO / "out/gpu/basara4-core.exe", REPO / "out/basara4-pad-mapper.exe"
+    play = REPO / "out/spartanport-play.exe"
     if not core.is_file():
         sys.exit(f"{core} is missing: run `bash build.sh` in the MSYS2 CLANG64 shell first")
+    if not play.is_file():
+        sys.exit(f"{play} is missing: run `bash build.sh` in the MSYS2 CLANG64 shell first")
     if target.exists() and not args.update:
         sys.exit(f"{target} already exists (use --update to refresh its programs)")
     if args.update and not target.is_dir():
@@ -113,6 +117,8 @@ def main():
         sys.exit("Close Sengoku Basara 4 (the launcher) and run again.")
     shutil.copytree(built / "_internal", internal)
     shutil.copy2(built / f"{NAME}.exe", target / f"{NAME}.exe")
+    shutil.copy2(play, target / f"Play {NAME}.exe")
+    run(clang / "llvm-strip.exe", "-s", target / f"Play {NAME}.exe")
 
     # runtime, mapper and the DLLs they load
     bin_dir = target / "bin"

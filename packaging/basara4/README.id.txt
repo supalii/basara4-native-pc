@@ -8,7 +8,11 @@ Cara main
      di launcher dan pilih folder lain.
   2. Buka "Sengoku Basara 4.exe", tekan PLAY. Start pertama menyiapkan image game dari eboot.bin
      (sekitar satu menit) dan diulang otomatis kalau eboot.bin berubah.
-  "Play Sengoku Basara 4.cmd" langsung menjalankan game dengan pengaturan terakhir.
+  "Play Sengoku Basara 4.exe" langsung menjalankan game dengan pengaturan terakhir tanpa
+  menampilkan jendela launcher; proses launcher keluar setelah game mulai. File .cmd juga
+  disediakan sebagai shortcut ke aplikasi tersebut.
+  Menutup launcher saat game berjalan tidak menghentikan game; launcher berhenti memantaunya
+  setelah Anda mengonfirmasi.
 
 Menu in-game: Insert, atau R3 + L2. Screenshot: F12.
 

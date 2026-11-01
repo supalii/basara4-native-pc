@@ -8,14 +8,18 @@ How to play
      "Browse" in the launcher and choose it somewhere else.
   2. Open "Sengoku Basara 4.exe" and press PLAY. The first start prepares the game image from
      eboot.bin (about a minute). It is redone by itself if eboot.bin changes (a patch, an update).
-  "Play Sengoku Basara 4.cmd" starts the game straight away with the last settings.
+  "Play Sengoku Basara 4.exe" starts the game with the last settings without showing the
+  launcher window; the launcher exits once the game starts. The .cmd file is a shortcut to it.
+  Closing the launcher while the game is running leaves the game running; the launcher stops
+  monitoring it after you confirm.
 
 Requirements
   Windows 10 (1903+) or 11, 64-bit. A CPU with AVX. A graphics card with Vulkan 1.3 and a current
   driver.
 
 Folder contents
-  Sengoku Basara 4.exe   launcher: display, resolution, upscaling, frame rate, controller
+  Sengoku Basara 4.exe        launcher: display, resolution, upscaling, frame rate, controller
+  Play Sengoku Basara 4.exe   starts the game with saved settings, without a launcher window
   bin\        the runtime (basara4-core.exe), the controller mapper and their DLLs
   game\       the game dump
   out\        the prepared game image (made automatically)

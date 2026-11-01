@@ -1,3 +1,3 @@
 @echo off
 cd /d "%~dp0"
-start "" "%~dp0Sengoku Basara 4.exe" --play
+start "" /wait "%~dp0Play Sengoku Basara 4.exe" %*
